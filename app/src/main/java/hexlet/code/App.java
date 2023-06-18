@@ -15,6 +15,19 @@ public class App implements Callable<Integer> {
     private static final int SUCCESS_EXIT_CODE = 0;
     private static final int ERROR_EXIT_CODE = 1;
 
+    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
+    private String format;
+
+    @CommandLine.Parameters(paramLabel = "filepath1",
+            index = "0",
+            description = "path to first file")
+    private String filePath1;
+
+    @CommandLine.Parameters(paramLabel = "filepath2",
+            index = "1",
+            description = "path to second file")
+    private String filePath2;
+
     /**
      * Computes a result, or throws an exception if unable to do so.
      *
