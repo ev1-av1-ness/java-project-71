@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := run-dist
+.DEFAULT_GOAL := build-run
 .PHONY: build
 
 clean:
@@ -21,6 +21,9 @@ run:
 
 test:
 	./gradlew test
+
+report:
+	./gradlew jacocoTestReport
 
 lint:
 	./gradlew checkstyleMain checkstyleTest

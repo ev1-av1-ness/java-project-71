@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 compileJava {
@@ -36,6 +37,12 @@ dependencies {
 
 checkstyle {
     toolVersion '9.2.1'
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
 
 test {
