@@ -1,35 +1,32 @@
-.DEFAULT_GOAL := build-run
+.DEFAULT_GOAL := run-dist
 .PHONY: build
 
+run-dist:
+	make -C app run-dist
+
 clean:
-	./gradlew clean
+	make -C app clean
 
 build:
-	./gradlew clean build
+	make -C app build
 
 install:
-	./gradlew clean install
-
-install-dist:
-	./gradlew clean installDist
+	make -C app install
 
 run-dist:
-	./build/install/app/bin/app
+	make -C run-dist
 
 run:
-	./gradlew run
+	make -C app run
 
 test:
-	./gradlew test
+	make -C app test
 
 report:
-	./gradlew jacocoTestReport
+	make -C app report
 
 lint:
-	./gradlew checkstyleMain checkstyleTest
+	make -C app lint
 
 update-deps:
-	./gradlew useLatestVersions
-
-
-build-run: build run
+	make -C app update-deps
