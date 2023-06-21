@@ -40,8 +40,9 @@ checkstyle {
 }
 
 jacocoTestReport {
+    dependsOn test
     reports {
-        xml.required = true
+        xml.enabled = true
     }
 }
 
