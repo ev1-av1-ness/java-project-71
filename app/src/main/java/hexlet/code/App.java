@@ -30,6 +30,11 @@ public class App implements Callable<Integer> {
             description = "path to second file")
     private String filePath2;
 
+    @CommandLine.Parameters(paramLabel = "formatName",
+            index = "2",
+            description = "name of format")
+    private String formatName;
+
     /**
      * Computes a result, or throws an exception if unable to do so.
      *
