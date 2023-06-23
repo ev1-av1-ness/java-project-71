@@ -1,26 +1,17 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static hexlet.code.Parser.parser;
 
 public class Differ {
     static String generate(String filePath1, String filePath2) throws Exception {
 
-/*  Метод generate() должен содержать процесс:
-    - чтение файлов в строковые переменные
-    - получение входного формата исходя из расширения одного из файлов
-    - парсинг данных (в зависимости от входного формата) в мапу
-    - построение разницы между данными
-    - форматирование разницы в необходимом формате (введён пользователем или дефолтный)*/
-
-        // Формируем путь абсолютный путь, если filePath будет содержать относительный путь,
-        // то мы всегда будет работать с абсолютным
         Path path1 = Path.of(filePath1).toAbsolutePath().normalize();
         Path path2 = Path.of(filePath2).toAbsolutePath().normalize();
 
@@ -52,7 +43,7 @@ public class Differ {
             Set<String> keys = new TreeSet<>(map1.keySet());
             keys.addAll(map2.keySet());
 
-            for (String key: keys) {
+            for (String key : keys) {
                 if (!map1.containsKey(key)) {
                     // ключ добавили, надо с плюсом
                     result.put(key, new Status(Status.ADDED, map2.get(key)));
